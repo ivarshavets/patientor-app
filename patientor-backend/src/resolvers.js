@@ -22,10 +22,13 @@ const diagnoses = [
   }
 ]
 
+const Patient = require('./models/patient')
+const Diagnose = require('./models/diagnose')
+
 const resolvers = {
   Query: {
-    allPatients: () => patients,
-    allDiagnoses: () => diagnoses,
+    allPatients: () => patients, //async (root, args) => Patient.find({}),
+    allDiagnoses: () => diagnoses //async (root, args) => Diagnose.find({}),
   }
 }
 

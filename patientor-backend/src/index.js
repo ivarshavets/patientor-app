@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-
-const MONGODB_URI = process.env.MONGODB_URI;
-
 mongoose.set('strictQuery',false)
 require('dotenv').config()
+
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI)
   .then(result => {
@@ -25,8 +24,9 @@ const server = new ApolloServer({
   resolvers,
 })
 
+const PORT = process.env.PORT || 4000
 startStandaloneServer(server, {
-  listen: { port: 4000 },
-}).then(({ url }) => {
-  console.log(`Server ready at ${url}`)
+  listen: PORT,
+}).then(() => {
+  console.log(`Server ready`)
 })
