@@ -15,6 +15,7 @@ export const CREATE_PATIENT = gql`
     name: $name,
     occupation: $occupation,
     gender: $gender,
+    ssn: $ssn,
     dateOfBirth: $dateOfBirth
   ) {
     id

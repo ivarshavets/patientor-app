@@ -23,8 +23,8 @@ const typeDefs = `
     createPatient(
       name: String!,
       dateOfBirth: String,
-      ssn: String,
       gender: String,
+      ssn: String,
       occupation: String!
     ): Patient
   }
