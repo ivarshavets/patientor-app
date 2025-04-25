@@ -1,29 +1,13 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { useQuery } from '@apollo/client'
-import { ALL_PATIENTS } from './queries'
+import PatientsPage from './components/PatientsPage'
+import AddPatientForm from './components/AddPatientForm'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const result = useQuery(ALL_PATIENTS)
-
-  console.log(result)
-  if (result.loading) {
-    return <div>loading...</div>
-  }
-
-  if (result && !result.data.allPatients) {
-    return <div>no data</div>
-  }
 
   return (
     <>
-      <div>
-        <h3>Patients</h3>
-        {result.data.allPatients.map((p: { name: string }) => p.name).join(', ')}
-      </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -32,18 +16,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div>
+        <h3>Patients</h3>
+        <PatientsPage />
+        <AddPatientForm />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
