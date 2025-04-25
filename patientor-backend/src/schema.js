@@ -18,6 +18,16 @@ const typeDefs = `
     allPatients: [Patient],
     allDiagnoses: [Diagnose]
   }
+
+  type Mutation {
+    createPatient(
+      name: String!,
+      dateOfBirth: String,
+      ssn: String,
+      gender: String,
+      occupation: String!
+    ): Patient
+  }
 `
 
 module.exports = typeDefs

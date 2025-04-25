@@ -29,6 +29,14 @@ const resolvers = {
   Query: {
     allPatients: () => patients, //async (root, args) => Patient.find({}),
     allDiagnoses: () => diagnoses //async (root, args) => Diagnose.find({}),
+  },
+  Mutation: {
+    createPatient: (_root, patient) => {
+      console.log('patient', patient)
+      const id = Math.floor(Math.random() * 100)
+      console.log('BE', patients.concat({...patient, id}))
+      return patients.concat({...patient, id})
+    }
   }
 }
 
