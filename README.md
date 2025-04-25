@@ -1,8 +1,8 @@
-Frontend:
-- React
-- TS
-- GraphQL, Apollo Client
+Setup Instruction
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [GraphQL](https://graphql.org/)
+- [Apollo](https://www.apollographql.com/docs)
 
-Backend:
-- Apollo Server
-- TS
+Prerequisite
+* install npm, node
