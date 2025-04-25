@@ -25,7 +25,10 @@ const AddPatientForm = () => {
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
+
     createPatient({ variables: formValues });
+    console.log('formValues', formValues)
+
     setFormValues(initialFormValues)
   }
 

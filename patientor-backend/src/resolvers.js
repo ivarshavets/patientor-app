@@ -1,3 +1,5 @@
+const { v1: uuid } = require('uuid')
+
 const patients = [
   {
     "id": "d2773336-f723-11e9-8f0b-362b9e155667",
@@ -31,13 +33,14 @@ const resolvers = {
     allDiagnoses: () => diagnoses //async (root, args) => Diagnose.find({}),
   },
   Mutation: {
-    createPatient: (_root, patient) => {
-      console.log('patient', patient)
-      const id = Math.floor(Math.random() * 100)
-      console.log('BE', patients.concat({...patient, id}))
-      return patients.concat({...patient, id})
+    createPatient: (_root, args) => {
+      console.log('patient', args)
+      const person = { ...args, id: uuid() }
+      persons = patients.concat(person)
+      return person
     }
   }
+
 }
 
 module.exports = resolvers
