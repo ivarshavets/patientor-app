@@ -1,22 +1,26 @@
-import { useQuery } from '@apollo/client'
-import { ALL_PATIENTS } from './../queries'
+import { useState, useEffect } from 'react'
 import { Patient} from '../types'
+import patientService from "../api/patients";
 
 const PatientsPage = () => {
-  const result = useQuery(ALL_PATIENTS)
+  const [patients, setPatients] = useState<Patient[]>([])
 
-  if (result.loading) {
-    return <div>loading...</div>
-  }
+  useEffect(()=> {
+    const fetchPatients = async () => {
+      const patients = await patientService.getAll();
+      setPatients(patients);
+    }
+    fetchPatients()
+  },[])
 
-  if (result && !result.data.allPatients) {
+  if (!patients) {
     return <div>no data</div>
   }
 
 
   return (
     <ul>
-      {result.data.allPatients.map((p: Patient) => {
+      {patients.map((p: Patient) => {
         return <li key={p.id}>{p.name}</li>
       })}
     </ul>
