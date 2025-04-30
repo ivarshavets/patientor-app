@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { apiBaseUrl } from "../constants";
+import { apiBaseUrl } from "../config";
 
 const getAll = async () => {
   const { data } = await axios.get(
@@ -10,4 +10,4 @@ const getAll = async () => {
   return data;
 };
 
-export default {getAll};
+export default { getAll };
