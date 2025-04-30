@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const diagnoseSchema = new mongoose.Schema({
   cose: {
@@ -22,4 +22,4 @@ diagnoseSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model('Diagnose', diagnoseSchema)
+export default mongoose.model('Diagnose', diagnoseSchema)
