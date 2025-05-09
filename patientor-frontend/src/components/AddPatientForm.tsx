@@ -1,18 +1,22 @@
 import { useState } from "react"
-import { useMutation } from "@apollo/client"
-
-import { CREATE_PATIENT } from "../queries"
-// import { Patient, PatientFormValues } from "../types"
+import { useMutation } from "@tanstack/react-query";
+import { Patient, NewPatient, Gender } from "../types"
+import patientService from "../services/patients";
 
 const AddPatientForm = () => {
-  const initialFormValues = {
+  const initialFormValues: NewPatient = {
     name: '',
     occupation: '',
-    gender: ''
+    gender: Gender.Female,
+    ssn: '',
+    dateOfBirth: ''
   }
+  // const queryClient = useQueryClient()
 
   const [formValues, setFormValues] = useState(initialFormValues)
-  const [createPatient] = useMutation(CREATE_PATIENT);
+  const {mutate} = useMutation<Patient, Error, NewPatient>({
+    mutationFn: (patientData: NewPatient) => patientService.postPatient(patientData)
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target
@@ -25,10 +29,7 @@ const AddPatientForm = () => {
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-
-    createPatient({ variables: formValues });
-    console.log('formValues', formValues)
-
+    mutate(formValues)
     setFormValues(initialFormValues)
   }
 

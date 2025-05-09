@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { Patient} from '../types'
-import patientService from "../api/patients";
+import patientService from "../services/patients";
 
 const PatientsPage = () => {
   // const [patients, setPatients] = useState<Patient[]>([])
@@ -14,7 +14,7 @@ const PatientsPage = () => {
   // },[])
   const {data, isLoading, isError} = useQuery<Patient[], Error>({
     queryKey: ['patients'],
-    queryFn: patientService.getAll,
+    queryFn: patientService.getAllPatients,
   });
 
   if (!data && isLoading) {

@@ -2,7 +2,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import PatientsPage from './components/PatientsPage'
-// import AddPatientForm from './components/AddPatientForm'
+import AddPatientForm from './components/AddPatientForm'
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
       <div>
         <h3>Patients</h3>
         <PatientsPage />
-        {/* <AddPatientForm /> */}
+        <AddPatientForm />
       </div>
 
     </>
