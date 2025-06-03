@@ -30,11 +30,14 @@ const PatientsPage = () => {
   }
 
   return (
-    <ul>
-      {data.map((p: Patient) => {
-        return <li key={p.id}>{p.name}</li>
-      })}
-    </ul>
+    <div>
+      <h3>Patients</h3>
+      <ul>
+        {data.map((p: Patient) => {
+          return <li key={p.id}>{p.name}</li>
+        })}
+      </ul>
+    </div>
   )
 }
 

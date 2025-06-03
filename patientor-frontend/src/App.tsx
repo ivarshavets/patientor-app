@@ -22,7 +22,6 @@ function App() {
       </div>
       <Navigation />
       <div className='container'>
-        <h3>Patients</h3>
         <Routes>
           <Route path="/" index element={<PatientsPage />} />
           <Route path="/send" element={<SendPage />} />
