@@ -2,12 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
-import patientRouter from './routes/patients';
 import { MONGODB_URI } from './config';
+import patientRouter from './routes/patients';
 
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not defined');
 }
+
+const app = express();
+app.use(cors())
+app.use(express.json());
 
 mongoose.connect(MONGODB_URI)
 .then(() => {
@@ -20,10 +24,6 @@ mongoose.connect(MONGODB_URI)
     console.log('unknown error connecting to MongoDB:', error)
   }
 })
-
-const app = express();
-app.use(cors())
-app.use(express.json());
 
 app.use('/api/patients', patientRouter)
 export default app

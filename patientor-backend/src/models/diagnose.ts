@@ -22,4 +22,5 @@ diagnoseSchema.set('toJSON', {
   }
 })
 
-export default mongoose.model('Diagnose', diagnoseSchema)
+const Diagnose = mongoose.model('Diagnose', diagnoseSchema)
+export default Diagnose

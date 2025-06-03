@@ -4,18 +4,16 @@ import patientsService from '../services/patients'
 
 const router = express.Router()
 
-router.get('/', (_req, res) => {
-  console.log('GET')
-  res.send(patientsService.getAll())
+router.get('/', async (_req, res) => {
+  const result = await patientsService.getAll()
+  res.send(result)
 })
 
-router.post('/',  (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    console.log('Post body', req.body)
     // // assuring that the object in a POST request has the correct type
     // const newPatient = parsePatientEntry(req.body)
-    const result =  patientsService.addEntry(req.body)
-    console.log('result', result)
+    const result = await patientsService.addEntry(req.body)
     res.json(result)
   } catch (error: unknown) {
     let errorMessage = 'Something went wrong.';

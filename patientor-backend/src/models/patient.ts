@@ -29,4 +29,5 @@ patientSchema.set('toJSON', {
   }
 })
 
-export default mongoose.model('Patient', patientSchema)
+const Patient = mongoose.model('Patient', patientSchema)
+export default Patient

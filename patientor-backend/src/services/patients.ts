@@ -1,20 +1,15 @@
-import patients from '../../data/patients';
-import {v1 as uuid} from 'uuid';
+import Patient from '../models/patient';
 import { NewPatient } from '../types';
 
-const getAll = () => {
+const getAll = async () => {
+  const patients = await Patient.find({});
   return patients
-  // return PatientModel.find({});
 };
 
-const addEntry = (entry:NewPatient) => {
-  const newPatient = {
-    ...entry,
-    id: uuid()
-  }
-  patients.push(newPatient)
-  console.log('new list', patients)
-  return newPatient
+const addEntry = async (entry:NewPatient) => {
+  const newPatient = new Patient(entry)
+  const savedPatient = await newPatient.save()
+  return savedPatient
 };
 
 const patientsService = {
@@ -22,4 +17,4 @@ const patientsService = {
   addEntry
   };
 
-  export default patientsService;
+export default patientsService;
