@@ -1,5 +1,6 @@
 // import React from 'react';
 import { useState, SyntheticEvent, ChangeEvent } from "react";
+import messageService from "../services/message";
 
 const SendPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ const SendPage: React.FC = () => {
 
     try {
       // await sendEmail(formData.recipientEmail, formData.message);
+      messageService.postMessage(formData);
       setStatus('Email sent successfully!');
       setFormData({
         recipientEmail: '',

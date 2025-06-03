@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 
 import { MONGODB_URI } from './config';
 import patientRouter from './routes/patients';
+import sendRouter from './routes/send';
 
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not defined');
@@ -26,4 +27,5 @@ mongoose.connect(MONGODB_URI)
 })
 
 app.use('/api/patients', patientRouter)
+app.use('/api/send', sendRouter)
 export default app
